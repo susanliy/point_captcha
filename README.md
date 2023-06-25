@@ -1,12 +1,11 @@
 # Vue 3 + TypeScript + Vite 验证登录
 
-
 ## 安装使用
 
 - 获取项目代码
 
 ```bash
-git clone http://124.71.114.204:8099/chenqy/login-captcha.git
+git clone https://github.com/susanliy/point_captcha.git
 ```
 
 - 安装依赖
