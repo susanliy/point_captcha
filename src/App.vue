@@ -1,6 +1,6 @@
 <template>
   <div class="verify-style" :style="{ opacity: !visible ? 0 : 1 }">
-    <div class="flex justify-between p-15px text-16px rounded-md">
+    <div class="flex justify-between py-10px px-8px text-16px rounded-md">
       安全校验
       <span class="icon-style" @click="hideModal"
         ><close-circle-outlined

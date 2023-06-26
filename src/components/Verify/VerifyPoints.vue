@@ -2,6 +2,19 @@
   <div style="position: relative">
     <div class="verify-img-out">
       <div
+        v-if="!pointBackImgBase"
+        :style="{
+          width: setSize.imgWidth,
+          height: setSize.imgHeight,
+          'background-size': setSize.imgWidth + ' ' + setSize.imgHeight,
+        }"
+        class="flex justify-center items-center flex-col text-16px"
+      >
+        <loading-outlined class="mb-20px" />
+        正在加载中....
+      </div>
+      <div
+        v-else
         class="p-5px relative box-content rounded-sm m-0"
         :style="{
           width: setSize.imgWidth,
@@ -37,6 +50,7 @@
       </div>
     </div>
     <div
+      v-if="pointBackImgBase"
       class="relative bg-[#fff] text-center box-content border-1 border-[#ddd] rounded-sm m-5px"
       :style="{
         width: setSize.imgWidth,
@@ -57,12 +71,13 @@
 import { resetSize, _code_chars, _code_color1, _code_color2 } from "./src/util";
 import { onMounted, reactive, ref, nextTick, getCurrentInstance } from "vue";
 import { captchaGet, captchaCheck } from "./src/api";
-import { UndoOutlined } from "@ant-design/icons-vue";
+import { UndoOutlined, LoadingOutlined } from "@ant-design/icons-vue";
 
 export default {
   name: "VerifyPoints",
   components: {
     UndoOutlined,
+    LoadingOutlined,
   },
   props: {
     imgSize: {
@@ -178,7 +193,6 @@ export default {
       // datetime       String   时间
       // msg    String      消息通知
       // token     String    null
-      console.log("callback:", res);
       window?.jsBridge &&
         window.jsBridge?.postMessage(JSON.stringify(res), "*");
     };
